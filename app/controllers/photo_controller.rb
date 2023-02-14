@@ -10,10 +10,10 @@ class PhotoController < ApplicationController
 
 
   def photo_id
-    the_id = params.fetch("photo_id")
+    @the_id = params.fetch("photo_id")
 
     list_of_photos = Photo.all
-    @a_photo = list_of_photos.where(:id => the_id).first
+    @a_photo = list_of_photos.where(:id => @the_id).first
 
     render(:template => "photo/show.html.erb")
   end
@@ -34,13 +34,20 @@ class PhotoController < ApplicationController
 
 
   def update_photo
-    the_id = params.fetch("photo_id")
+    the_id = params.fetch("up_id")
     list_of_photos = Photo.all
     d_photo = list_of_photos.where(:id => the_id).first
 
+    the_url = params.fetch("updateurl")
+    the_desc = params.fetch("cap_update")
 
+    d_photo.image = the_url
+    d_photo.caption = the_desc
 
-    render(:template=> "photo/update_photo.html.erb")
+    d_photo.save
+
+    #render(:template=> "photo/update_photo.html.erb")
+    redirect_to("/photos/" + the_id.to_s)
   end
 
   def insert_photo
@@ -64,7 +71,7 @@ class PhotoController < ApplicationController
 
 
     #render(:template=> "photo/insert_photo.html.erb")
-    redirect_to("/photos")
+    redirect_to("/photos/"+ a.id.to_s)
   end
 
 

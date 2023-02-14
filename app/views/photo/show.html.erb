@@ -2,39 +2,40 @@
 
 <dl>
 
-<dt>Image</dt>
-<dd>  <img src= "<%=@a_photo.image%>" </dd>
+  <dt>Image</dt>
+    <dd>  <img src= "<%=@a_photo.image%>"> </dd>
 
-<dt>Caption</dt>
-<dd><%=@a_photo.caption%></dd>
+  <dt>Caption</dt>
+    <dd><%=@a_photo.caption%></dd>
 
-<dt>Owner</dt>
-<dd><%=@a_photo.poster.username%></dd>
+  <dt>Owner</dt>
+    <dd><%=@a_photo.poster.username%></dd>
 
-<dt>Posted</dt>
-<dd><%=@a_photo.poster.created_at%></dd>
+  <dt>Posted</dt>
+    <dd><%=@a_photo.poster.created_at%></dd>
 
-<dt>Edit photo</dt>
-<dd>
-<form action="/photos/update_comment_record"></form>
+  <dt>Edit photo</dt>
+    <dd>
+  
+      <form action="/update_photos/<%=@a_photo.id%>">
+        <%# <form action="/update_photos">      %> 
 
-<label for="newurl">Image</label>
-<input id="newurl" type="text" value="<%= @a_photo.image %>" name="updateurl" >
+        <label for="newurl">Image</label>
+        <input id="newurl" type="text" value="<%= @a_photo.image %>" name="updateurl" >
 
-<label for="updesc">Caption</label>
-<input id="updesc" type="text" value="<%=@a_photo.caption%>" name="cap_update" >
+        <label for="updesc">Caption</label>
+        <input id="updesc" type="text" value="<%=@a_photo.caption%>" name="cap_update" >
 
-<button>Update photo</button>
+        <button>Update photo</button>
 
+      </form>
 
+    </dd>
 
-</dd>
-
-<dt>Delete photo</dt>
-<dd>
-<a href = "/delete_photos/<%= @a_photo.id%>">Delete this photo</a>
-
-</dd>
+  <dt>Delete photo</dt>
+    <dd>
+      <a href = "/delete_photo/<%= @a_photo.id%>">Delete this photo</a>
+    </dd>
 
 </dl>
 
@@ -63,15 +64,16 @@
 
 <h3>Add a new comment</h3>
 
-<form action="/photos/insert_comment_record"></form>
+<form action="/photos/insert_comment_record">
 
-<label for="pid">Photo ID</label>
-<input id="pid" type="text" value="<%= @a_photo.id %>" name="pid" >
+  <label for="pid">Photo ID</label>
+  <input id="pid" type="text" value="<%= @a_photo.id %>" name="pid" >
 
-<label for="author">Author ID</label>
-<input id="author" type="text" name="author_id" >
+  <label for="author">Author ID</label>
+  <input id="author" type="text" name="author_id" >
 
-<label for="ctext">Owner ID</label>
-<input id="ctext" type="text" placeholder="Enter a comment..." name="comment_text" >
+  <label for="ctext">Owner ID</label>
+  <input id="ctext" type="text" placeholder="Enter a comment..." name="comment_text" >
 
-<button>Add comment</button>
+  <button>Add comment</button>
+</form>
