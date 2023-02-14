@@ -1,0 +1,56 @@
+<h1><%= @user_detail.username %> </h1>
+
+<dl>
+  <dt>ID</dt>
+    <dd> <%= @user_detail.id %></dd>
+  <dt>Edit user</dt>
+    <dd>
+    <form action="/update_user/ <%= @user_detail.id %> ">
+    <label for="browser_username">Username</label>
+    <input id= "browser_username" type="text" name="input_username" placeholder="Enter a username..." >
+    <button>Update user</button>
+    </form>
+    
+    </dd>
+
+
+</dl>
+
+
+<h2>Own photos (<%= @user_detail.own_photos.count %>)</h2>
+
+
+<table class="table" border= 1 >
+  <tr>
+    <th>Image</th>
+    <th>Owner</th>
+    <th>Caption</th>
+    <th>Posted</th>
+    <th></th>
+  </tr>
+
+  <% photobook = @user_detail.own_photos %>
+  <% photobook.each do |pic| %>
+  <tr>
+    <th> 
+    <img src = "<%= pic.image %>"> </a>
+    </th>
+    <th> <%= pic.owner_id %> </th>
+    <th> <%= pic.caption %> </th>
+    <th> <%= pic.created_at %> </th>
+    <th>
+    <a href = "/photos/ <%= pic.id %> ">Show details</a>
+    </th>
+  
+  
+  
+  </tr>
+
+
+  <%end%>
+
+
+
+
+
+</table>

@@ -2,17 +2,29 @@
 
 <form action="username">Username</form>
 <input id="username" type="text" placeholder="Enter a username..." name= "username">
+
 <Button>Add user</Button>
 
+<div></div>
 
 <table class="table" border ="1" >
 
-<tr>
-<th>ID</th>
-<th>username</th>]
-<th></th>
-</tr>
+  <tr>
+    <th>ID</th>
+    <th>username</th>
+    <th></th>
+  </tr>
 
+  <% @list_of_users.each do |a_user| %>
+
+    <tr>
+    <th> <%= a_user.id %> </th>
+    <th> <%= a_user.username%> </th>
+    <th> <a href = "/users/<%= a_user.id %>" > Show details </th>
+    </tr>
+
+
+  <%end%>
 
 
 
@@ -20,4 +32,3 @@
 
 
 </table>
-
