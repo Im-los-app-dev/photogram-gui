@@ -1,1 +1,45 @@
-<h1>Hi Photo</h1>
+<h1>List of photos</h1>
+
+<form action="/insert_photos">
+
+<label for="url">Image</label>
+<input id="url" type="text" placeholder="Enter a URL for the image" name="photourl" >
+
+<label for="desc">Caption</label>
+<input id="desc" type="text" placeholder="Enter a caption for the photo..." name="photodesc" >
+
+<label for="oid">Owner ID</label>
+<input id="oid" type="text" placeholder="Enter an ID of a User" name="photooid" >
+
+<button>Add Photo</button>
+
+</form>
+
+<table class="table" border= 1 >
+  <tr>
+    <th>Image</th>
+    <th>Caption</th>
+    <th>Owner</th>
+    <th>Posted</th>
+    <th></th>
+  </tr>
+
+  <%# photobook = @user_detail.own_photos %>
+  <% @list_of_photos.each do |pic| %>
+  <tr>
+    <th> 
+    <img src = "<%= pic.image %>"> </a>
+    </th>
+    <th> <%= pic.caption %> </th>
+    <th> <%= pic.poster.username %> </th>
+    <th> <%= pic.created_at %> </th>
+    <th>
+    <a href = "/photos/ <%= pic.id %> ">Show details</a>
+    </th>
+  
+  </tr>
+
+
+  <%end%>
+
+</table>
