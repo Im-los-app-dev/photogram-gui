@@ -21,10 +21,10 @@
         <%# <form action="/update_photos">      %> 
 
         <label for="newurl">Image</label>
-        <input id="newurl" type="text" value="<%= @a_photo.image %>" name="updateurl" >
+        <input id="newurl" type="text" name="updateurl" value="<%= @a_photo.image %>" placeholder="Enter a URL for the image..." >
 
         <label for="updesc">Caption</label>
-        <input id="updesc" type="text" value="<%=@a_photo.caption%>" name="cap_update" >
+        <textarea id="updesc" name="cap_update" > <%=@a_photo.caption%> </textarea>
 
         <button>Update photo</button>
 
@@ -64,7 +64,7 @@
 
 <h3>Add a new comment</h3>
 
-<form action="/photos/insert_comment_record">
+<form action="/insert_comment">
 
   <label for="pid">Photo ID</label>
   <input id="pid" type="text" value="<%= @a_photo.id %>" name="pid" >
@@ -72,8 +72,8 @@
   <label for="author">Author ID</label>
   <input id="author" type="text" name="author_id" >
 
-  <label for="ctext">Owner ID</label>
-  <input id="ctext" type="text" placeholder="Enter a comment..." name="comment_text" >
+  <label for="ctext">Comment</label>
+  <textarea id="ctext" placeholder="Enter a comment..." name="comment_text" > </textarea>
 
   <button>Add comment</button>
 </form>
